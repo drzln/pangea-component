@@ -10,15 +10,16 @@ def component(**kwargs)
   virtual_name  = kwargs.fetch(:name, nil)
   properties    = kwargs.fetch(:properties, {})
 
+  # raise ArgumentError.new(properties)
   resource(resource_name, virtual_name) do
-    properties.each_key do |method|
+    properties.each_key do |_method|
       args = kwargs.dig(:properties, pn)
-      send(method, args)
+      # send(method, args)
     end
   end
 
-  outputs = {}
-  outputs[:inputs] = kwargs
+  outputs           = {}
+  outputs[:inputs]  = kwargs
 
   outputs
 end

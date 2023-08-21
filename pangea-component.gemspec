@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative %(./src/lib/pangea-component/version)
+require_relative %(./src/lib/pangea_component/version)
 
 Gem::Specification.new do |spec|
   spec.name                  = %(pangea-component)
