@@ -12,9 +12,9 @@ def component(**kwargs)
 
   # raise ArgumentError.new(properties)
   resource(resource_name, virtual_name) do
-    properties.each_key do |_method|
-      args = kwargs.dig(:properties, pn)
-      # send(method, args)
+    properties.each_key do |method|
+      args = kwargs.dig(:properties, method)
+      send(method, args)
     end
   end
 
