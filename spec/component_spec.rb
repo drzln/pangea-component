@@ -1,8 +1,9 @@
 require_relative %(../src/lib/pangea-component/pangea-component)
 require %(terraform-synthesizer)
 
+TF = TerraformSynthesizer.new
+
 describe %(component interface) do
-  TF = TerraformSynthesizer.new
   it %(returns a Hash) do
     TF.synthesize do
       # results = component(

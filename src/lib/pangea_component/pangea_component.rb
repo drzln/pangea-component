@@ -5,10 +5,9 @@ def symbolize(hash)
 end
 
 def component(**kwargs)
-
   # ensure everything passed into component
   # is consistently keyed by symbols
-  kwargs  = symbolize(kwargs) unless kwargs.nil?
+  kwargs = symbolize(kwargs) unless kwargs.nil?
   # args    = symbolize(args) unless args.nil?
 
   # perform any sort of validation on passed in
@@ -18,10 +17,15 @@ def component(**kwargs)
   # raise "component name not specified" unless kwargs[:name]
   # raise "#{kwargs[:name]} has no properties" unless kwargs[:properties]
 
+  resource_name = kwargs.fetch(:resource, nil)
+  virtual_name  = kwargs.fetch(:name, nil)
+  properties    = kwargs.fetch(:properties, {})
+
   # resource call which triggers compilation
-  resource(kwargs[:resource], kwargs[:name]) do
-    kwargs[:properties].each_key do |pn|
-      send(pn, kwargs[:properties][pn])
+  resource(resource_name, virtual_name) do
+    properties.each_key do |method|
+      args = kwargs.dig(:properties, pn)
+      send(method, args)
     end
   end
 
