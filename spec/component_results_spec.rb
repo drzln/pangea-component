@@ -8,7 +8,7 @@ describe %(component interface) do
 
   before do
     tf.synthesize do
-      component(
+      results = component(
         resource: :aws_vpc,
         name: %(test_vpc),
         properties: {
@@ -17,9 +17,11 @@ describe %(component interface) do
         }
       )
 
-      output :vpc_id do
-        value :test_vpc
-        description %(The ID of the VPC)
+      results[:inputs].each_key do |k|
+        output k do
+          value results[:inputs][k]
+          description %(The input #{k})
+        end
       end
     end
   end
