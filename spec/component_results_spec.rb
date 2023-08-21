@@ -1,11 +1,13 @@
 require_relative %(../src/lib/pangea_component/pangea_component)
 require %(terraform-synthesizer)
 
-TF = TerraformSynthesizer.new
-
 describe %(component interface) do
+  let(:tf) do
+    TerraformSynthesizer.new
+  end
+
   before do
-    TF.synthesize do
+    tf.synthesize do
       component(
         resource: :aws_vpc,
         name: %(test_vpc),
@@ -23,6 +25,6 @@ describe %(component interface) do
   end
 
   it %(returns a Hash) do
-    expect(TF.synthesis).to be_kind_of(Hash)
+    expect(tf.synthesis).to be_kind_of(Hash)
   end
 end
