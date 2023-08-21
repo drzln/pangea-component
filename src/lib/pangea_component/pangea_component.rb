@@ -10,7 +10,6 @@ def component(**kwargs)
   virtual_name  = kwargs.fetch(:name, nil)
   properties    = kwargs.fetch(:properties, {})
 
-  # raise ArgumentError.new(properties)
   resource(resource_name, virtual_name) do
     properties.each_key do |method|
       args = kwargs.dig(:properties, method)
@@ -20,6 +19,10 @@ def component(**kwargs)
 
   outputs           = {}
   outputs[:inputs]  = kwargs
+
+  # future handle for extracted properties
+  # from derived components
+  nil if kwargs[:extracted_properties]
 
   outputs
 end
