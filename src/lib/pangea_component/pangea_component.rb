@@ -8,7 +8,6 @@ def component(**kwargs)
   # ensure everything passed into component
   # is consistently keyed by symbols
   kwargs = symbolize(kwargs) unless kwargs.nil?
-  # args    = symbolize(args) unless args.nil?
 
   # perform any sort of validation on passed in
   # component data
