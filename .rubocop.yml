@@ -28,6 +28,9 @@ Metrics/PerceivedComplexity:
 Metrics/ParameterLists:
   Enabled: false
 
+Metrics/ModuleLength:
+  Enabled: false
+
 Style/MissingRespondToMissing:
   Enabled: false
 
