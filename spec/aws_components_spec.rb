@@ -1,6 +1,6 @@
 require %(terraform-synthesizer)
 
-describe 'aws components' do
+describe %(aws components) do
   let(:tf) do
     TerraformSynthesizer.new
   end
